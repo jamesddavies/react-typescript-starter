@@ -4,7 +4,12 @@
   "description": "TypeScript React Starter with webpack and SASS",
   "main": "./src/index.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "builddev": "webpack --config webpack.dev.js",
+    "postbuilddev": "echo built dev",
+    "buildprod": "webpack -p --config webpack.prod.js",
+    "postbuildprod": "echo built prod",
+    "dev": "webpack-dev-server --open --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
