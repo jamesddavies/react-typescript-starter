@@ -1,20 +1,17 @@
-import * as React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { decodedJWT } from '../../interfaces/apiResponses';
+import * as React from 'react'
+import { Route, Redirect } from 'react-router-dom'
 
 interface PrivateRouteProps {
-    component: any;
-    path: string;
-    auth: boolean;
-    loaded: boolean;
-    tokenDetails: decodedJWT | null;
+    component: any
+    auth: boolean
+    loaded: boolean
+    params: any
 }
 
-const PrivateRoute = (props: PrivateRouteProps) => {
-    let Component = props.component;
-    let auth = props.auth;
-    let tokenDetails = props.tokenDetails;
-    let path = props.path;
+const PrivateRoute: React.SFC<PrivateRouteProps> = (props: PrivateRouteProps) => {
+    let Component = props.component
+    let auth = props.auth
+    let params = props.params
     
     if (!props.loaded) {
         return <div></div>;
@@ -23,11 +20,11 @@ const PrivateRoute = (props: PrivateRouteProps) => {
             <Route render={props => (
                 <div>
                     {!auth && <Redirect to={{ pathname: '/login', state: { from: props.location.pathname } }} />}
-                    <Component {...{tokenDetails, path}} />
+                    <Component {...{params}} />
                 </div>
             )}/>
         )
     }
 }
 
-export default PrivateRoute;
+export default PrivateRoute

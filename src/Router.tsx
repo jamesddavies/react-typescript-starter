@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-const Router = () => (
+const Router: React.SFC<{}> = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={} />

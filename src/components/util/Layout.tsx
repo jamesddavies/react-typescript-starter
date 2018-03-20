@@ -1,13 +1,13 @@
-import * as React from 'react';
+import * as React from 'react'
 
 interface LayoutProps {
     children?: any
 }
 
-const Layout = (props: LayoutProps) => (
+const Layout: React.SFC<LayoutProps> = (props: LayoutProps) => (
     <div className="layout-container">
         <header>
-                
+
         </header>
             {props.children}
         <footer>

@@ -1,15 +1,11 @@
-import * as React from 'react';
-import '../../scss/Loader.scss';
-var Logo = require('../../img/Logo.png');
+import * as React from 'react'
+import '../../scss/Loader.scss'
+var LoaderImage = require('../../img/Loader.png')
 
-interface LoaderProps {
-    placement?: "full-page" | "partial-page"
-}
-
-const Loader = (props: LoaderProps) => {
+const Loader: React.SFC<{}> = () => {
     return (
-        <div className={"_loader " + (props.placement ? props.placement : "full-page")}>
-            <img src={Logo} />
+        <div className="_loader ">
+            <img src={LoaderImage} />
             <p>Loading...</p>
         </div>
     )
