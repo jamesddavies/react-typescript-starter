@@ -12,6 +12,7 @@ module.exports = merge(common, {
         publicPath: "/"
     },
     devtool: false,
+    mode: 'production',
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'

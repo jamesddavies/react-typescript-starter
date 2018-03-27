@@ -7,11 +7,14 @@ interface LayoutProps {
 const Layout: React.SFC<LayoutProps> = (props: LayoutProps) => (
     <div className="layout-container">
         <header>
-            header
+            <div className="overlay"></div>
+            <h1>React TypeScript Starter</h1>
         </header>
+        <section className="page-content">
             {props.children}
+        </section>
         <footer>
-            footer
+            This is the footer
         </footer>
     </div>
 )

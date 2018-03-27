@@ -13,5 +13,6 @@ module.exports = merge(common, {
         port: 3080,
         historyApiFallback: true
     },
-    devtool: 'source-map'
+    devtool: 'source-map',
+    mode: 'development'
 });
