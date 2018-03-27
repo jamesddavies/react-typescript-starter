@@ -1,11 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].css"
-});
 
 module.exports = {
     entry: ["./src/index.tsx"],
@@ -18,12 +13,7 @@ module.exports = {
             {
                 test: /\.ts|tsx$/,
                 exclude: /node_modules/,
-                loader: ["babel-loader", "awesome-typescript-loader"]
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: ["ts-loader"]
             },
             {
                 test: /\.html$/,
@@ -33,21 +23,14 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: extractSass.extract({
-                    use: [{
-                        loader: "css-loader"
-                    },{
-                        loader: "sass-loader"
-                    }],
-                    fallback: "style-loader"
-                })
-            },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: 'css-loader',
-                    fallback: 'style-loader'
-                })
+                use: [{
+                    loader: "style-loader"
+                },{
+                    loader: "css-loader"
+                },{
+                    loader: "sass-loader"
+                }],
+                exclude: /node_modules/
             },
             {
                 enforce: "pre",
@@ -69,7 +52,6 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
-        }),
-        extractSass
+        })
     ]
 }
